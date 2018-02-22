@@ -1,0 +1,9 @@
+numpy
+opencv-python
+opencv-contrib-python
+sklearn
+ujson
+requests
+pytest
+
+tensorpack
