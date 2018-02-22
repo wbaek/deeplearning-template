@@ -16,3 +16,4 @@ def test_get_bool():
     """
     assert sample.get_bool() == True
     assert sample.get_bool(True) == True
+    assert sample.get_bool(False) == False

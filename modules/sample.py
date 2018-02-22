@@ -25,5 +25,4 @@ def get_bool(true_or_false=True):
     """
     if true_or_false:
         return True
-    else:
-        return False
+    return False
