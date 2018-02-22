@@ -54,8 +54,9 @@ jobs:
           command: |
             . venv/bin/activate
             ./cc-test-reporter before-build
-            py.test --cov=modules tests/
-            ./cc-test-reporter after-build --coverage-input-type coverage.py
+            py.test --cov=modules --cov-report=xml tests/
+            ./cc-test-reporter format-coverage -t coverage.py $CIRCLE_ARTIFACTS/coverage.xml
+            ./cc-test-reporter upload-coverage
 
       - store_artifacts:
           path: test-reports
