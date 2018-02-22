@@ -1,14 +1,13 @@
+ujson
+requests
+
 numpy
 opencv-python
 opencv-contrib-python
 sklearn
-ujson
-requests
-
 tensorpack
 
 pytest
 pytest-cov
 pylint
 coverage
-codacy-coverage
