@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: aad56b073317b949b2cdde4741aa4d380b01fcbf590943ecd66e37e614397aad
+
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
@@ -38,17 +41,21 @@ jobs:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-        
+
       # run tests!
-      # this example uses Django's built-in test-runner
-      # other common Python testing frameworks include pytest and nose
-      # https://pytest.org
-      # https://nose.readthedocs.io
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            pytest
+            ./cc-test-reporter before-build
+            py.test --cov=modules --cov-report=xml tests/
+            ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
       - store_artifacts:
           path: test-reports
