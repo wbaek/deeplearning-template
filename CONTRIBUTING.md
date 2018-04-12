@@ -22,7 +22,7 @@ pip install pylint
 To check files with `pylint`:
 
 ```bash
-pylint ./modules/
+pylint {MODULE_PATH}
 ```
 
 Expected result:
