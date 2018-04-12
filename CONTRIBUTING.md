@@ -43,7 +43,7 @@ pip install pytest pytest-cov
 To check tests with `pytest`: 
 
 ```bash
-py.test --cov=modules tests/
+py.test --cov={MODULE_PATH} tests/
 ```
 Expected result:
 
